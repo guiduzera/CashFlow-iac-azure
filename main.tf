@@ -22,6 +22,7 @@ module "db" {
   server_name            = "cashflow${terraform.workspace}"
   resource_group_name    = azurerm_resource_group.rg.name
   location               = azurerm_resource_group.rg.location
+  zone                   = 3
   database_name          = "cashflowdb"
   administrator_login    = "cashflowadmin"
   administrator_password = var.administrator_password

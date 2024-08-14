@@ -22,6 +22,13 @@ variable "location" {
   sensitive = false
 }
 
+variable "zone" {
+  description = "The zone of the Azure Database for MySQL server"
+  type        = number
+  default     = 3
+  sensitive = false
+}
+
 variable "sku_name" {
   description = "The SKU of the Azure Database for MySQL server"
   type        = string

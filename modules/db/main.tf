@@ -6,6 +6,8 @@ resource "azurerm_mysql_flexible_server" "server" {
   administrator_password = var.administrator_password
   sku_name               = var.sku_name
 
+  zone = var.zone
+
   tags = var.tags
 }
 
