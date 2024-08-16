@@ -22,6 +22,13 @@ variable "sku" {
   sensitive = false
 }
 
+variable "admin_enabled" {
+  description = "Enable the admin user for the Azure Container Registry"
+  type        = bool
+  default     = false
+  sensitive = false
+}
+
 variable "tags" {
   description = "A map of tags to assign to the Azure Container Registry"
   type        = map(string)
