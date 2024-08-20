@@ -35,6 +35,27 @@ variable "sku_name" {
   sensitive = false
 }
 
+variable "firewall_rule_name" {
+  description = "The name of the firewall rule for the Azure Database for MySQL server"
+  type        = string
+  default     = "office"
+  sensitive = false
+}
+
+variable "start_ip_address" {
+  description = "The start IP address of the firewall rule for the Azure Database for MySQL server"
+  type        = string
+  default     = "0.0.0.0"
+  sensitive = false
+}
+
+variable "end_ip_address" {
+  description = "The end IP address of the firewall rule for the Azure Database for MySQL server"
+  type        = string
+  default     = "0.0.0.0"
+  sensitive = false
+}
+
 variable "administrator_login" {
   description = "The administrator login for the Azure Database for MySQL server"
   type        = string

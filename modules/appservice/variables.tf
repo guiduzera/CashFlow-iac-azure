@@ -53,12 +53,6 @@ variable "docker_registry_password" {
   type        = string
 }
 
-variable "dotnet_version" {
-  description = "The version of .NET to use"
-  type        = string
-  default     = "8.0"
-}
-
 variable "app_settings" {
   description = "A map of app settings to assign to the App Service"
   type        = map(string)

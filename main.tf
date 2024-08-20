@@ -28,6 +28,9 @@ module "db" {
   administrator_login    = "cashflowadmin"
   administrator_password = var.administrator_password
   sku_name               = "B_Standard_B1s"
+  firewall_rule_name     = "myoffice"
+  start_ip_address       = "187.19.227.247"
+  end_ip_address         = "187.19.227.247"
   charset                = "utf8"
   collation              = "utf8_general_ci"
 
@@ -44,10 +47,9 @@ module "appservice" {
   app_service_name                = "cashflow-${terraform.workspace}-api"
   app_service_resource_group_name = azurerm_resource_group.rg.name
   docker_image_name               = "cashflowapi"
-  docker_registry_url             = module.acr.acr_login_server
-  docker_registry_username        = module.acr.acr_admin_username
-  docker_registry_password        = module.acr.acr_admin_password
-  dotnet_version                  = "8.0"
+  docker_registry_url             = "https://cashflowproduction.azurecr.io"
+  docker_registry_username        = "cashflowproduction"
+  docker_registry_password        = var.acr_admin_password
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
     WEBSITES_PORT                       = "8080"
