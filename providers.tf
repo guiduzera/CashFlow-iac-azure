@@ -22,6 +22,11 @@ provider "azurerm" {
       prevent_deletion_if_contains_resources = true
     }
   }
+
+  client_id       = "1d5a9622-41e9-454a-b0bf-eaabcf173e89"
+  client_secret   = var.client_secret
+  tenant_id       = "b61f1e4f-78cc-47e0-961b-d54ee7655ec8"
+  subscription_id = "bbfb7373-5c19-4a95-8361-2b79fffd73ce"
 }
 
 resource "azurerm_storage_account" "tfstate" {

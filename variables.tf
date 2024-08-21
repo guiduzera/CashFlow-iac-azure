@@ -9,3 +9,9 @@ variable "acr_admin_password" {
   type        = string
   sensitive   = true
 }
+
+variable "client_secret" {
+  description = "The client secret for the Azure Service Principal"
+  type        = string
+  sensitive   = true
+}
