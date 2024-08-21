@@ -49,6 +49,9 @@ jobs:
           echo 'subscription_id = "${{ secrets.AZURE_SUBSCRIPTION_ID }}"' >> production.tfvars
           echo 'administrator_password = "${{ secrets.AZURE_ADMINISTRATOR_PASSWORD }}"' >> production.tfvars
           echo 'acr_admin_password = "${{ secrets.AZURE_ACR_ADMIN_PASSWORD }}"' >> production.tfvars
+      
+      - name: Terraform workspace
+        run: terraform workspace new production || terraform workspace select production
 
       - name: Terraform plan
         run: terraform plan -var-file=production.tfvars
