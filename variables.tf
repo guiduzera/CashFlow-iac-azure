@@ -15,3 +15,21 @@ variable "client_secret" {
   type        = string
   sensitive   = true
 }
+
+variable "client_id" {
+  description = "The client ID for the Azure Service Principal"
+  type        = string
+  sensitive = false
+}
+
+variable "tenant_id" {
+  description = "The tenant ID for the Azure Service Principal"
+  type        = string
+  sensitive = false
+}
+
+variable "subscription_id" {
+  description = "The subscription ID for the Azure Service Principal"
+  type        = string
+  sensitive = false
+}

@@ -10,7 +10,6 @@ permissions:
   contents: read
 
 jobs:
-
   run-terraform:
     name: 'Run terraform'
     runs-on: ubuntu-latest
@@ -29,12 +28,19 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Export Azure credentials
+        run: |
+          echo "ARM_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }}" >> $GITHUB_ENV
+          echo "ARM_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }}" >> $GITHUB_ENV
+          echo "ARM_SUBSCRIPTION_ID=${{ secrets.AZURE_SUBSCRIPTION_ID }}" >> $GITHUB_ENV
+          echo "ARM_TENANT_ID=${{ secrets.AZURE_TENANT_ID }}" >> $GITHUB_ENV
+
       - name: Terraform init
         run: terraform init
 
       - name: Terraform format
         run: terraform fmt -check
-      
+
       - name: Terraform plan
         run: terraform plan
 
