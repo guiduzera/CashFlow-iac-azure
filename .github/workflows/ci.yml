@@ -41,9 +41,18 @@ jobs:
       - name: Terraform format
         run: terraform fmt -check
 
+      - name: Create tfvars file
+        run: |
+          echo 'client_secret = "${{ secrets.AZURE_CLIENT_SECRET }}"' >> production.tfvars
+          echo 'client_id = "${{ secrets.AZURE_CLIENT_ID }}"' >> production.tfvars
+          echo 'tenant_id = "${{ secrets.AZURE_TENANT_ID }}"' >> production.tfvars
+          echo 'subscription_id = "${{ secrets.AZURE_SUBSCRIPTION_ID }}"' >> production.tfvars
+          echo 'administrator_password = "${{ secrets.AZURE_ADMINISTRATOR_PASSWORD }}"' >> production.tfvars
+          echo 'acr_admin_password = "${{ secrets.AZURE_ACR_ADMIN_PASSWORD }}"' >> production.tfvars
+
       - name: Terraform plan
-        run: terraform plan
+        run: terraform plan -var-file=production.tfvars
 
       - name: Terraform apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
+        run: terraform apply -var-file=production.tfvars -auto-approve
